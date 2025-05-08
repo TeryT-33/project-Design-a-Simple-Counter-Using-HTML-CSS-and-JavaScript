@@ -1,22 +1,18 @@
-let c = 0, ci = 0, cd = 0;
-const count = document.getElementById("count");
-const incCount = document.getElementById("incCount");
-const decCount = document.getElementById("decCount");
-
-function inc() {
-    c++;
-    ci = (ci >= 10) ? 0 : ci + 1;
-    update();
+// This script changes the background color of the webpage when a color is clicked from the color palette.
+function bgchange(color){
+    let colorarray = ["#e58e26", "#f9b4ab", "#B1FB17", "#78e08f", "#fd79a8"]
+    document.body.style.background = colorarray[color];
+    document.body.style.transition = "background 1.5s ease-in-out";
 }
 
-function dec() {
-    c = c > 0 ? c - 1 : 0;
-    cd = (cd >= 10) ? 0 : cd + 1;
-    update();
-}
+var colorarray = ["#e58e26", "#f9b4ab", "#B1FB17", "#78e08f", "#fd79a8"];
+var colorbox = document.getElementById("colorbox");
 
-function update() {
-    count.textContent = c;
-    incCount.textContent = ci;
-    decCount.textContent = cd;
-}
+colorarray.forEach(function(color,index){
+    let span = document.createElement("span");
+    span.style.backgroundColor = color;
+    span.addEventListener("click", function(){
+        bgchange(index);
+    });
+    colorbox.appendChild(span);
+});
